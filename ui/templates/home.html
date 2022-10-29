@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content" onload="document.genform.reset();">
+    <form name="genform" autocomplete="off" class="form" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Comments Generator</h1>
+        <p>Sentiment File</p>
+        <div class="file-upload" id="sentiment-upload">
+            <p>Drag & drop or click to browse</p>
+            <input type="file" name="sentiment-file" value="" />
+        </div>
+        <p>Examples File</p>
+        <div class="file-upload" id="examples-upload">
+            <p>Drag & drop or click to browse</p>
+            <input type="file" name="examples-file" value="" />
+        </div>
+        <p>Completed Comments Location</p>
+        <div class="completed-loc">
+            <input type="text" id="completed-loc" placeholder="Select a Location..." value="" name="file-path">
+            <button id="browse" type="button">Browse</button>
+        </div>
+
+        <hr>
+
+        <div class="submit-reset">
+            <button id="reset" type="reset">Reset</button>
+            <button id="submit" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    // responsible for the drag and drop functionality! (Didn't want to use a library)
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.file-upload').forEach(function(fileUpload) {
+            var origText = fileUpload.querySelector('p').innerHTML;
+            var input = fileUpload.querySelector('input');
+            var fileChanged = function() {
+                var files = input.files;
+                if (files.length) {
+                    fileUpload.querySelector('p').innerHTML = '';
+                    for (let i=0; i<files.length; i++) {
+                        fileUpload.querySelector('p').innerHTML += files[i].name + '<br>';
+                    }
+                    fileUpload.classList.add('filled');
+                } else {
+                    fileUpload.querySelector('p').innerHTML = origText;
+                    fileUpload.classList.remove('filled');
+                }
+            };
+
+            input.addEventListener('change', fileChanged);
+            fileChanged(input);
+        });
+    });
+</script>
+{% endblock content %}
