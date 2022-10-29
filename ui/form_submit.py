@@ -1,5 +1,3 @@
-completed_comments_loc = ""
-
 # files are as follows: name, contents
 # you can redo this easily! (You may want to)
 
@@ -17,11 +15,9 @@ local_examples_file_path = None
 
 
 def handle_submit(request, files):
-    global completed_comments_loc
     global sentiment_file
     global examples_file
 
-    completed_comments_loc = request.get('file-path')
     raw_sent_file = files.get('sentiment-file')
     raw_ex_file = files.get('examples-file')
 
@@ -52,7 +48,6 @@ def handle_submit(request, files):
     # the files will get mixed up. It would have to be within the same <1 second though.
     examples_file = ["", ""]
     sentiment_file = ["", ""]
-    completed_comments_loc = ""
 
 
 def create_files_locally():
