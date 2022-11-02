@@ -11,15 +11,10 @@
             <p>Drag & drop or click to browse</p>
             <input type="file" name="sentiment-file" value="" />
         </div>
-        <p>Examples File</p>
+        <p>Examples Directory</p>
         <div class="file-upload" id="examples-upload">
             <p>Drag & drop or click to browse</p>
-            <input type="file" name="examples-file" value="" />
-        </div>
-        <p>Completed Comments Location</p>
-        <div class="completed-loc">
-            <input type="text" id="completed-loc" placeholder="Select a Location..." value="" name="file-path">
-            <button id="browse" type="button">Browse</button>
+            <input type="file" name="examples-dir" directory="" webkitdirectory="" value="" />
         </div>
 
         <hr>
@@ -42,7 +37,13 @@
                 if (files.length) {
                     fileUpload.querySelector('p').innerHTML = '';
                     for (let i=0; i<files.length; i++) {
-                        fileUpload.querySelector('p').innerHTML += files[i].name + '<br>';
+                        if (files.length <= 1) {
+                            fileUpload.querySelector('p').innerHTML += files[i].name;
+                        }
+                        
+                        else {
+                            fileUpload.querySelector('p').innerHTML += files.length + " Files";
+                        }
                     }
                     fileUpload.classList.add('filled');
                 } else {
