@@ -27,6 +27,20 @@
 </div>
 
 <script type="text/javascript">
+    function truncateWithEllipses(str) {
+        // split str into array of strings by spaces
+        var words = str.split(', ');
+        const maxWords = 4;
+        if (words.length > maxWords) {
+            // join first 3 words with spaces
+            var truncated = words.slice(0, maxWords).join(', ');
+            // add ellipses
+            truncated += '...';
+            return truncated;
+        }
+        return str;
+    }
+
     // responsible for the drag and drop functionality! (Didn't want to use a library)
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll('.file-upload').forEach(function(fileUpload) {
@@ -36,14 +50,18 @@
                 var files = input.files;
                 if (files.length) {
                     fileUpload.querySelector('p').innerHTML = '';
-                    for (let i=0; i<files.length; i++) {
-                        if (files.length <= 1) {
-                            fileUpload.querySelector('p').innerHTML += files[i].name;
-                        }
+                    if (files.length <= 1) {
+                        fileUpload.querySelector('p').innerHTML += files[0].name;
+                    }
                         
-                        else {
-                            fileUpload.querySelector('p').innerHTML += files.length + " Files";
+                    else {
+                        let str = '';
+
+                        for (var i = 0; i < files.length; i++) {
+                            str += files[i].name + ', ';
                         }
+
+                        fileUpload.querySelector('p').innerHTML += truncateWithEllipses(str);
                     }
                     fileUpload.classList.add('filled');
                 } else {
