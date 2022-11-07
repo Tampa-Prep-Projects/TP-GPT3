@@ -1,0 +1,77 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.form {
+    background: #fff;
+    border-radius: var(--form-radius);
+    padding: 20px;
+    width: clamp(350px, 50%, 400px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form h1 {
+    color: var(--color-primary);
+    margin-bottom: 30px;
+}
+
+#hasaccount {
+    text-align: center;
+    margin-top: 35px;
+    color: var(--color-text);
+}
+
+#message {
+    color: var(--color-primary);
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form a {
+    color: #269dff;
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+}
+
+.form a:hover {
+    color: #1f7ac4;
+    cursor: pointer;
+}
+
+.form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #f6f8fa;
+    border: 2px solid #d3e1e6;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    color: var(--color-text);
+    transition: all 0.2s ease-in-out;
+}
+
+.form input:focus {
+    outline: none;
+    border: 2px solid #7c7c7c;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.form button:hover {
+    background-color: #df2e2e;
+}

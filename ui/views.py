@@ -5,6 +5,9 @@ from .form_submit import handle_submit
 
 
 def home(request):
+    if not request.user.is_authenticated:
+        return redirect('/auth')
+
     if request.method == "POST":
         print("Got form type", request.content_type)
         # handle the form submission

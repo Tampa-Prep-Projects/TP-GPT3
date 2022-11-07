@@ -1,195 +1,33 @@
 :root {
-  --form-radius: 15px;
-  --color-primary: #ff3b3b;
-  --color-text: #494f55;
-  font-size: 16px;
+    --form-radius: 15px;
+    --color-primary: #ff3b3b;
+    --color-text: #494f55;
+    font-size: 16px;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #e8e8e8;
+    margin: 0;
+    padding: 0;
+    background: #e8e8e8;
 }
 
 @font-face {
-  font-family: "ArgentumSans";
-  src: url("../fonts/ArgentumSans.ttf");
+    font-family: "ArgentumSans";
+    src: url("../fonts/ArgentumSans.ttf");
 }
 
 h1,
 h2,
 h3 {
-  font-family: "ArgentumSans", sans-serif;
-  color: #000;
-  padding: 0;
-  margin: 0;
+    font-family: "ArgentumSans", sans-serif;
+    color: #000;
+    padding: 0;
+    margin: 0;
 }
 
 p {
-  font-family: "Open Sans", sans-serif;
-  color: var(--color-text);
-  padding: 0;
-  margin: 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.form {
-  background: #fff;
-  border-radius: var(--form-radius);
-  padding: 20px;
-  width: clamp(350px, 50%, 400px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.form h1 {
-  color: var(--color-primary);
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-}
-
-.form select {
-  width: 180px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 6px 0 0 0;
-  font-size: 1rem;
-  font-family: "Open Sans", sans-serif;
-}
-
-.form p {
-  margin-left: 5px;
-  font-size: 1.2rem;
-}
-
-.file-upload {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5px 0 20px 0;
-  background-color: #dcefff;
-  width: 100%;
-  height: 55px;
-  border-radius: 8px;
-  border: 2px dashed #a9d8ff;
-  transition: all 0.2s ease-in-out;
-  position: relative;
-}
-
-.file-upload p {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  font-family: "Open Sans", sans-serif;
-}
-
-.file-upload input {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  display: block;
-  opacity: 0;
-  top: 0;
-  cursor: pointer;
-}
-
-.file-upload:hover {
-  background-color: #c6e5ff;
-  cursor: pointer;
-}
-
-.completed-loc {
-  display: flex;
-  align-items: space-evenly;
-  justify-content: center;
-  width: 100%;
-  margin: 5px 0 0 0;
-  height: 35px;
-}
-
-.completed-loc input {
-  width: 78.5%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 0.9rem;
-  color: var(--color-text);
-}
-
-.completed-loc input:focus {
-  outline: 1px solid #a9d8ff;
-  border-color: #a9d8ff;
-  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset,
-    0 0 8px rgba(0, 0, 0, 0.15);
-}
-
-.completed-loc button {
-  width: 20%;
-  padding: 8px;
-  margin-left: 1.5%;
-  border-radius: 6px;
-  border: none;
-  background-color: var(--color-primary);
-  color: #fff;
-  transition: all 0.2s ease-in-out;
-}
-
-.completed-loc button:hover {
-  cursor: pointer;
-  background-color: #df2e2e;
-}
-
-.form hr {
-  margin: 25px -20px 20px -20px;
-  border: 1px solid #ccc;
-}
-
-.submit-reset {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 40px;
-}
-
-.submit-reset button {
-  width: 48%;
-  height: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid rgb(182, 182, 182);
-  transition: all 0.2s ease-in-out;
-}
-
-#reset {
-  background-color: #fff;
-  color: var(--color-text);
-}
-
-#submit {
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  color: #fff;
-  height: 100%;
-  transition: all 0.2s ease-in-out;
-}
-
-.submit-reset button:hover {
-  cursor: pointer;
-}
-
-#submit:hover {
-  background-color: #df2e2e;
-}
-
-#reset:hover {
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+    font-family: "Open Sans", sans-serif;
+    color: var(--color-text);
+    padding: 0;
+    margin: 0;
 }

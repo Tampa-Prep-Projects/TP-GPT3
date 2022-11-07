@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+    <div class="content" onload="document.signupform.reset()">
+        <form name="signupform" class="form" method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Create an Account</h1>
+            <input type="text" name="username" placeholder="Username" value="" />
+            <input type="password" name="password" placeholder="Password" value="" />
+            <input type="password" name="password-conf" placeholder="Confirm Password" value="" />
+            <button id="signin" type="submit">Sign up</button>
+            <p id="message">{{ message }}</p>
+            <p id="hasaccount">Already have an account? <a>Log in</a></p>
+        </form>
+    </div>
+
+    <script>
+        // get the message ID
+        var message = document.getElementById('message');
+        // if length is 0, hide the message
+        if (message.innerHTML.length == 0) {
+            message.style.display = 'none';
+        }
+
+        document.querySelector('a').addEventListener('click', function() {
+            window.location.href = "{% url 'login' %}";
+        });
+    </script>
+{% endblock content %}

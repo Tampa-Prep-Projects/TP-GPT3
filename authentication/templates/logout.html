@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/logout.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+    <div class="container">
+        <div class="centered">
+            <h1>Successfully signed out!</h1>
+            <p>Redirecting...</p>
+        </div>
+        <p id="force-redir">Not working? <a onclick="loginRedir()">Click Here</a> to force redirect!</p>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'login' %}";
+        }, 1800);
+
+        function loginRedir() {
+            console.log("Redirecting...");
+            window.location.href = "{% url 'login' %}";
+        }
+    </script>
+{% endblock content %}

@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="https://kit.fontawesome.com/d8451d4c6b.js" crossorigin="anonymous"></script>
+{% endblock stylesheet %}
+
 {% block content %}
-<div class="content" onload="document.genform.reset();">
+<div class="content" onload="document.genform.reset()">
     <form name="genform" autocomplete="off" class="form" method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
-        <h1>Comments Generator</h1>
+        <div class="title-sect">
+            <h1>Comments Generator</h1>
+            <i class="fa-solid fa-right-from-bracket" title="Sign Out" onclick="signout()"></i>
+        </div>
         <p>Sentiment File</p>
         <div class="file-upload" id="sentiment-upload">
             <p>Drag & drop or click to browse</p>
@@ -27,6 +35,10 @@
 </div>
 
 <script type="text/javascript">
+    function signout() {
+        window.location.href = "{% url 'logout' %}";
+    }
+
     function truncateWithEllipses(str) {
         // split str into array of strings by spaces
         var words = str.split(', ');

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+    <div class="content" onload="document.loginform.reset()">
+        <form name="loginform" class="form" method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Welcome Back!</h1>
+            <input type="text" name="username" placeholder="Username" value="" />
+            <input type="password" name="password" placeholder="Password" value="" />
+            <button id="signin" type="submit">Sign in</button>
+            <p id="message">{{ message }}</p>
+            <p id="noaccount">Don't have an account? <a>Sign Up</a></p>
+        </form>
+    </div>
+
+    <script>
+        // get the message ID
+        var message = document.getElementById('message');
+        // if length is 0, hide the message
+        if (message.innerHTML.length == 0) {
+            message.style.display = 'none';
+        }
+
+        document.querySelector('a').addEventListener('click', function() {
+            window.location.href = "{% url 'signup' %}";
+        });
+    </script>
+{% endblock content %}
