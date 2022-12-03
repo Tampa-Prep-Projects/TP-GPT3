@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 # import handle_submit from form_submit.py
 from .form_submit import handle_submit
-from django.http import JsonResponse
+import time
 
 
 def home(request):
@@ -12,6 +12,6 @@ def home(request):
         print("Got form type", request.content_type)
         # handle the form submission
         api_result = handle_submit(request.FILES)
-        return JsonResponse({"text": "Hello World!"})
+        return render(request, 'result.html', {'file_contents': api_result})
 
     return render(request, 'home.html', {'title': 'Report Card Commenter'})

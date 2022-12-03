@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/result.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+    <div class="res">
+        <div class="result-contents">
+            <h1>Result</h1>
+            <pre>{{ file_contents }}</pre>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button id="back" onclick="goBack()">Go Back</button>
+    </div>
+
+    <script type="text/javascript">
+
+        function goBack() {
+            window.history.go(-1);
+            return false;
+        }
+
+    </script>
+{% endblock content %}

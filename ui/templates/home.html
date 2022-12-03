@@ -4,12 +4,11 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="https://kit.fontawesome.com/d8451d4c6b.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
 {% endblock stylesheet %}
 
 {% block content %}
 <div class="content" onload="document.genform.reset()">
-    <form name="genform" autocomplete="off" class="form" method="POST" action="" enctype="multipart/form-data">
+    <form name="genform" autocomplete="off" class="form" method="POST" action="" enctype="multipart/form-data" onsubmit="return submitForm(event)">
         {% csrf_token %}
         <div class="title-sect">
             <h1>Comments Generator</h1>
@@ -29,7 +28,7 @@
         <hr>
 
         <div class="submit-reset">
-            <button id="reset" type="reset">Reset</button>
+            <button id="reset" type="reset" onclick="resetForm()">Reset</button>
             <button id="submit" type="submit">Submit</button>
         </div>
     </form>
@@ -88,27 +87,12 @@
         });
     });
 
-    // last but not least, hacky code to update button text
-    function queryAPIData() {
-        $.ajax({
-            url: "/",
-            type: "POST",
-            data: {
-                name: "text",
-                'csrfmiddlewaretoken': '{{ csrf_token }}',
-            },
-            
-            success: function(data) {
-                var text = data['text'];
-                var button = document.getElementById('submit');
-                button.innerHTML = text;
-                setTimeout(function(){queryAPIData();}, 1000);
-            }
+    function resetForm() {
+        // clear text in file upload
+        document.querySelectorAll('.file-upload').forEach(function(fileUpload) {
+            fileUpload.querySelector('p').innerHTML = 'Drag & drop or click to browse';
+            fileUpload.classList.remove('filled');
         });
     }
-
-    $document.ready(function() {
-        queryAPIData();
-    });
 </script>
 {% endblock content %}

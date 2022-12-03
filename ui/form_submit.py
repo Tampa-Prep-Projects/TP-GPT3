@@ -1,5 +1,4 @@
-import requests
-from django.http import JsonResponse
+import os
 
 
 def handle_submit(files):
@@ -31,16 +30,11 @@ def handle_submit(files):
 
     '''
 
-    # Make a sample API request as a test to simulate an OpenAI call
-    response = requests.get("https://catfact.ninja/fact")
-    fact = response.json().get("fact")
-    print(f"FACT: {fact}")
+    # open a file to write to
+    testPath = os.getcwd() + "/ui/test.end"
+    f = open(testPath, "r")
+    contents = f.read()
+    f.close()
+    # os.remove(testPath)
 
-    # now that the request has completed, let's change the submit button
-    # to say "view results" instead of "submit"!
-    return fact
-
-
-# This is kind of a hacky way to do things, but it is seemingly the ONLY way
-def send_update():
-    return JsonResponse({"text": text})
+    return contents
